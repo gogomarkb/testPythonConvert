@@ -1,0 +1,30 @@
+- path: file1.txt
+  state: present
+  content: "This is file 1."
+  owner: user1
+  group: group1
+  mode: "0644"
+
+- path: directory1
+  state: present
+  file_type: directory
+  owner: user2
+  group: group2
+  mode: "0755"
+  recurse: true
+  children:
+    - path: file2.txt
+      state: present
+      content: "This is file 2 within directory1."
+      owner: user2
+      group: group2
+      mode: "0600"
+    - path: subdirectory1
+      state: present
+      file_type: directory
+      owner: user2
+      group: group2
+      mode: "0700"
+
+- path: file_to_remove.txt
+  state: absent
